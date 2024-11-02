@@ -2,11 +2,9 @@
 
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { useStationContext } from '../../context/StationContext'; // Import the context
 
 function SignIn() {
   const router = useRouter();
-  const { loadStations } = useStationContext();  // Now loadStations is accessible
   
   // Create refs to track the username and password fields
   const emailRef = useRef<HTMLInputElement>(null);
@@ -28,10 +26,10 @@ function SignIn() {
         setLoading(true); // Start loading
         setError(null);   // Clear previous errors
 
-        // Load stations (wait for the API call to complete)
-        await loadStations();
+        // Remove the loadStations call
+        // await loadStations();
 
-        // Redirect to the dashboard after stations are loaded
+        // Redirect to the dashboard after login
         router.push("/dashboard");
       } catch (error) {
         setError(error); // Show an error message if stations can't be loaded
@@ -42,7 +40,8 @@ function SignIn() {
       setError('Invalid credentials. Please try again.');
     }
   };
-  //Signin box design
+
+  // Signin box design
   return (
     <div className="bg-base-200 flex items-center justify-center min-h-screen">
       <div className="card w-96 bg-base-100 shadow-xl rounded-2xl">
