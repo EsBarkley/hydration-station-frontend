@@ -3,12 +3,22 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import StationMonitor from '../components/StationMonitor';
 
+// Define the Station interface
+interface Station {
+  id: number;
+  name: string;
+  bottlescleaned: number;
+  soaplevel: number;
+  sanitation: number;
+  numbottlesfilled: number;
+}
+
 function Dashboard() {
-  const [stations, setStations] = useState([]);
-  const [selectedStation, setSelectedStation] = useState(null);
+  const [stations, setStations] = useState<Station[]>([]); // Specify the type for stations
+  const [selectedStation, setSelectedStation] = useState<Station | null>(null); // Specify the type for selectedStation
   
   // Placeholder data for stations
-  const placeholderStations = [
+  const placeholderStations: Station[] = [
     {
       id: 1,
       name: 'Hydration Station 1',
@@ -49,7 +59,7 @@ function Dashboard() {
   }
 
   // Function to set the station to the one selected by user
-  const handleStationSelect = (station) => {
+  const handleStationSelect = (station: Station) => {
     setSelectedStation(station);
   };
 
