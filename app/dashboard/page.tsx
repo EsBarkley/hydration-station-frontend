@@ -1,33 +1,51 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
+import StationMonitor from '../components/StationMonitor';
 
 function Dashboard() {
-  const [stations, setStations] = useState([]); // Local state for storing stations
-  const [selectedStation, setSelectedStation] = useState(null); // Local state for the selected station
-
-  // Function to load stations from the API
-  const loadStations = async () => {
-    try {
-      const response = await fetch('/api/get'); // Replace with your actual API route
-      const data = await response.json();
-      setStations(data); // Set the fetched stations
-      if (data.length > 0 && !selectedStation) {
-        setSelectedStation(data[0]); // Set the first station as default if not set
-      }
-    } catch (error) {
-      console.error('Error fetching stations:', error);
+  const [stations, setStations] = useState([]);
+  const [selectedStation, setSelectedStation] = useState(null);
+  
+  // Placeholder data for stations
+  const placeholderStations = [
+    {
+      id: 1,
+      name: 'Hydration Station 1',
+      bottlescleaned: 25,
+      soaplevel: 12,
+      sanitation: 10,
+      numbottlesfilled: 10
+    },
+    {
+      id: 2,
+      name: 'Hydration Station 2',
+      bottlescleaned: 30,
+      soaplevel: 8,
+      sanitation: 9,
+      numbottlesfilled: 15
+    },
+    {
+      id: 3,
+      name: 'Hydration Station 3',
+      bottlescleaned: 15,
+      soaplevel: 10,
+      sanitation: 8,
+      numbottlesfilled: 5
     }
-  };
+  ];
 
-  // Load stations when component mounts
+  // Set placeholder stations on mount
   useEffect(() => {
-    loadStations();
+    setStations(placeholderStations);
+    if (placeholderStations.length > 0) {
+      setSelectedStation(placeholderStations[0]); // Set the first station as default
+    }
   }, []);
 
-  // Show loading if there is an error where no station is selected
+  // Show loading if no station is selected
   if (!selectedStation) {
-    return <div>Loading stations...</div>; // Show loading until a station is selected
+    return <div>Loading stations...</div>; // You may change this message if needed
   }
 
   // Function to set the station to the one selected by user
@@ -35,12 +53,11 @@ function Dashboard() {
     setSelectedStation(station);
   };
 
-  // Navigation bar on top
+  // Navigation bar on top with station monitor component showing selected station data
   return (
     <div>
       <Navbar stations={stations} onSelectStation={handleStationSelect} selectedStation={selectedStation} />
-      {/* If you need to render something based on selectedStation, add it here */}
-      {/* Example: <div>{selectedStation.name}</div> */}
+      <StationMonitor station={selectedStation} />
     </div>
   );
 }
