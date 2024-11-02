@@ -1,9 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { useStationContext } from '../../context/StationContext'; // Import the context
 
-function Navbar({ onSelectStation, selectedStation }) {
-  const { stations } = useStationContext(); // Access station data from context
+function Navbar({ stations, onSelectStation, selectedStation }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Track if the dropdown is open
 
   // Toggle the dropdown menu open/close
@@ -13,7 +11,6 @@ function Navbar({ onSelectStation, selectedStation }) {
 
   // Close the dropdown when a station is selected
   const handleStationClick = (station) => {
-    // You can handle station selection logic here, e.g., setSelectedStation(station);
     onSelectStation(station); // Pass the selected station to the parent component
     setIsDropdownOpen(false); // Close the dropdown after selecting a station
   };
@@ -57,8 +54,8 @@ function Navbar({ onSelectStation, selectedStation }) {
                   <a
                     onClick={() => handleStationClick(station)} // Close the menu on station click
                     className={`cursor-pointer flex items-center gap-2 ${
-                        selectedStation.id === station.id ? 'font-bold' : ''
-                      }`}
+                      selectedStation.id === station.id ? 'font-bold' : ''
+                    }`}
                   >
                     <span>{station.name}</span>
                     <span className="badge badge-primary">{station.bottlescleaned}</span>
