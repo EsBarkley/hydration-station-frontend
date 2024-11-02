@@ -1,12 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import StationMonitor from '../components/StationMonitor';
 
 function Dashboard() {
-  const [stations, setStations] = useState([]);
-  const [selectedStation, setSelectedStation] = useState(null);
-  
+  const [stations, setStations] = useState([]); // Local state for storing stations
+  const [selectedStation, setSelectedStation] = useState(null); // Local state for the selected station
+
   // Function to load stations from the API
   const loadStations = async () => {
     try {
@@ -36,11 +35,12 @@ function Dashboard() {
     setSelectedStation(station);
   };
 
-  // Navigation bar on top with station monitor component showing selected station data
+  // Navigation bar on top
   return (
     <div>
       <Navbar stations={stations} onSelectStation={handleStationSelect} selectedStation={selectedStation} />
-      <StationMonitor station={selectedStation} />
+      {/* If you need to render something based on selectedStation, add it here */}
+      {/* Example: <div>{selectedStation.name}</div> */}
     </div>
   );
 }
