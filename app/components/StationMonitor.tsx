@@ -13,7 +13,7 @@ function StationMonitor({ station }) {
         </div>
         <div className="p-4 bg-gray-100 rounded shadow">
           <h3 className="font-semibold">Soap Level</h3>
-          <p>{station.soaplevel}</p>
+          <p>{station.soaplevel}%</p>
         </div>
         <div className="p-4 bg-gray-100 rounded shadow">
           <h3 className="font-semibold">Sanitation</h3>
