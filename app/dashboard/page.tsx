@@ -42,6 +42,22 @@ function Dashboard() {
       soaplevel: 10,
       sanitation: 8,
       numbottlesfilled: 5
+    },
+    {
+      id: 4,
+      name: 'Hydration Station 4',
+      bottlescleaned: 15,
+      soaplevel: 10,
+      sanitation: 8,
+      numbottlesfilled: 5
+    },
+    {
+      id: 5,
+      name: 'Hydration Station 5',
+      bottlescleaned: 15,
+      soaplevel: 10,
+      sanitation: 8,
+      numbottlesfilled: 5
     }
   ];
 

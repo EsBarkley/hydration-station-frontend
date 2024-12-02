@@ -58,7 +58,6 @@ function Navbar({ stations, onSelectStation, selectedStation }) {
                     }`}
                   >
                     <span>{station.name}</span>
-                    <span className="badge badge-primary">{station.bottlescleaned}</span>
                   </a>
                 </li>
               ))}
