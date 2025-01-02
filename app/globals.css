@@ -25,3 +25,15 @@ body {
     text-wrap: balance;
   }
 }
+
+/* styles/globals.css */
+[data-theme="corporate"] {
+  --background: #ffffff;
+  --foreground: #1f2937;
+}
+
+[data-theme="dark"] {
+  --background: #1f2937;
+  --foreground: #f8fafc;
+}
+
