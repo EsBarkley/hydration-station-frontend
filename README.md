@@ -1,7 +1,7 @@
 # Hydration Station Full-Stack Website
 
 ## Live Website 
-- URL: hydration-station.live
+- URL: [hydration-station.live](https://main.d30o46gfw7s3wg.amplifyapp.com
   
 **Login**:
 - Email: guy
